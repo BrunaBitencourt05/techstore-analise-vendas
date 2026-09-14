@@ -1,44 +1,44 @@
-# 📊 Análise de Vendas com Python e SQL
+# 🛒 TechStore - Análise Exploratória de Vendas
 
-Este projeto consiste em um estudo de análise de dados utilizando **Python** (`pandas`) e **SQL** (`sqlite3`) para manipular e extrair insights estratégicos a partir de uma base de dados de vendas.
-
-O projeto foi desenvolvido e executado em ambiente Jupyter Notebook (`.ipynb`).
+Este repositório contém a solução do desafio de análise de dados da empresa fictícia **TechStore**. O objetivo principal é realizar uma Análise Exploratória de Dados (EDA) em Python e SQL a partir de um histórico de vendas em formato CSV, respondendo a perguntas estratégicas de negócio.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 📌 Objetivos do Projeto
 
-- **Python**: Linguagem principal do projeto.
-- **Pandas**: Manipulação e análise de estruturas de dados.
-- **SQLite3**: Banco de dados relacional para execução de consultas SQL.
-- **Google Colab / Jupyter Notebook**: Ambiente de desenvolvimento interativo.
-
----
-
-## 🔍 Principais Análises Realizadas
-
-1. **Contagem Total de Registros**: Verificação do volume geral da base de dados.
-2. **Filtragem por Categorias**: Identificação de vendas específicas (ex: eletrônicos).
-3. **Cálculo de Faturamento**: Criação da coluna `receita_total` calculando `quantidade * preco_unitario`.
-4. **Produto Mais Vendido**: Consulta SQL utilizando agregação (`SUM`) e agrupamento (`GROUP BY`) para determinar o produto campeão de vendas em volume.
-5. **Região de Maior Faturamento**: Identificação da região com maior valor financeiro gerado em compras.
+- **Carregamento e Exploração:** Importar e inspecionar a base de dados de vendas (`vendas.csv`).
+- **Consultas de Negócio:**
+  - Identificar o produto mais vendido em quantidade de unidades.
+  - Mapear a região com maior faturamento em vendas.
+  - Filtrar registros por categorias específicas (ex: Eletrônicos).
+  - Calcular a receita total gerada (`quantidade * preco_unitario`).
+- **Manipulação de Dados:** Utilizar rotinas em **Python (Pandas)** e **SQL (SQLite3)** dentro de um ambiente notebook interativo.
 
 ---
 
-## 🛠️ Consultas SQL em Destaque
+## 🛠️ Tecnologias Utilizadas
+
+- **Python 3**
+- **Pandas**: Leitura, limpeza e transformação de dados.
+- **SQLite3**: Execução de consultas SQL diretamente sobre DataFrames.
+- **Jupyter Notebook / Google Colab**: Ambiente de execução da análise (`.ipynb`).
+
+---
+
+## 📊 Principais Consultas SQL Aplicadas
 
 <details>
-<summary>Clique para ver os exemplos de queries utilizadas</summary>
+<summary>Clique para ver as queries executadas</summary>
 
 ```sql
--- Produto mais vendido em quantidade de unidades
+-- Produto campeão em unidades vendidas
 SELECT produto, SUM(quantidade) AS total_vendido 
 FROM vendas 
 GROUP BY produto 
 ORDER BY total_vendido DESC 
 LIMIT 1;
 
--- Região com maior valor total de compras
+-- Região líder em faturamento total
 SELECT regiao, SUM(quantidade * preco_unitario) AS maior_valor 
 FROM vendas 
 GROUP BY regiao 
